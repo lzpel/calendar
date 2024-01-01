@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import React from "react";
 import {Container, Grid} from "@mui/material";
 import {Stack} from "@mui/system";
+import url from "@/util/url";
 
 const title="あと何日？"
 const description="'今日から選択した日付まで、あと何日かを計算します。'"
@@ -22,7 +23,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
               direction="row"
               spacing={2}
           >
-              <a href={"/"}>home</a>
+              <a href={url("/")}>home</a>
               <a href="https://twitter.com/lzpel">© lzpel 2024</a>
           </Stack>
       </Container>
