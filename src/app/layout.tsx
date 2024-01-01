@@ -3,7 +3,7 @@ import React from "react";
 import {Container, Grid} from "@mui/material";
 import {Stack} from "@mui/system";
 
-const title="'あと何日？'"
+const title="あと何日？"
 const description="'今日から選択した日付まで、あと何日かを計算します。'"
 export const metadata: Metadata = {
   title,
