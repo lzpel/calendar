@@ -22,7 +22,7 @@ export default function Home() {
           >
             By{' '}
             <Image
-              src="/vercel.svg"
+              src="/calender/vercel.svg"
               alt="Vercel Logo"
               className={styles.vercelLogo}
               width={100}
