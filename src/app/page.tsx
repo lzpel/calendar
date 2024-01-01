@@ -2,6 +2,7 @@ import Image from 'next/image'
 import styles from './page.module.css'
 import dateToString from "@/util/date";
 import DateContent from "@/ui/DateContent";
+import url from "@/util/url";
 
 
 export default function Home() {
@@ -22,7 +23,7 @@ export default function Home() {
           >
             By{' '}
             <Image
-              src="/vercel.svg"
+              src={url("/vercel.svg")}
               alt="Vercel Logo"
               className={styles.vercelLogo}
               width={100}
