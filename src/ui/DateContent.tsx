@@ -7,12 +7,6 @@ import {Typography} from "@mui/material";
 
 const FORMAT_LIST=["left","passed","life"] as const
 type FORMAT =typeof FORMAT_LIST[number]
-function stringToFormat(str: string): FORMAT|undefined{
-    if(FORMAT_LIST.includes(str)){
-        return str as FORMAT
-    }
-    return undefined
-}
 function date_plus(a:Date, n:number):Date{
     let r=new Date(a)
     r.setFullYear(n+a.getFullYear())
@@ -65,7 +59,7 @@ export default function DateContent(params: {format:FORMAT}) {
     const searchParams = useSearchParams();
     const date = stringToDate(searchParams.get("date")??"");
     if(date && params.format){
-        return <DateContentInner format={params.format} date={date} suppressHydrationWarning={true}/>
+        return <DateContentInner format={params.format} date={date}/>
     }else{
         if(!date){
             return <>
