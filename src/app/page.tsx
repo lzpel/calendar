@@ -1,101 +1,29 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-import dateToString from "@/util/date";
-import DateContent from "@/ui/DateContent";
+"use client"
+import {dateToString, stringToDate} from "@/util/date";
 import url from "@/util/url";
-
-
+import React from "react";
+import {ButtonGroup, Grid, Typography} from "@mui/material";
+import {Button} from "@mui/base";
+import {Stack} from "@mui/system";
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          {dateToString(new Date())}
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <DateContent/>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src={url("/vercel.svg")}
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    const [date, setDate]=React.useState(new Date() as Date|undefined)
+    const dateString=date ? dateToString(date) : "~"
+    const dateInputString=date? dateToString(date,true):""
+    return (
+        <>
+            <Typography variant="h4">1. 日付を選択</Typography>
+            <input type="date" value={dateInputString} onChange={(e) => {
+                setDate(stringToDate(e.currentTarget.value))
+            }}/>
+            <Typography variant="h4">2. 表示形式を選択</Typography>
+                <ButtonGroup
+                    orientation="vertical"
+                    aria-label="vertical outlined button group"
+                >
+                    <Button href={url(`/left?date=${dateInputString}`)}>{dateString}まであと何日</Button>,
+                    <Button href={url(`/passed?date=${dateInputString}`)}>{dateString}から何日経過</Button>,
+                    <Button href={url(`/life?date=${dateInputString}`)}>{dateString}生まれの余命</Button>,
+                </ButtonGroup>
+        </>
+    )
 }
