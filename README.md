@@ -1,3 +1,14 @@
+# あと何日
+
+指定した日時までの日数などを表示します。
+2024/1/1作成
+
+URL: https://lzpel.github.io/calendar/
+
+使用例URL(作者の死まで):https://lzpel.github.io/calendar/life?date=1996-06-06
+
+## 以下メモ
+
 ```
 smith@DESKTOP-F8JCPGN:~/calendar$ npx create-next-app@latest
 Need to install the following packages:
@@ -47,3 +58,13 @@ run `npm fund` for details
 found 0 vulnerabilities
 Success! Created calendar at /home/smith/calendar
 ```
+
+## ESLintとWebStormのせっていについて
+
+以下の手順で、WebStormでESLintのエラーをエディター上に表示することができます。
+
+1. WebStormの設定画面を開きます。
+2. 「Languages & Frameworks」→「JavaScript」→「Code Quality Tools」→「ESLint」を選択します。
+3. 「Automatic ESLint configuration」を有効にします。
+4. 「Node interpreter」に、Node.jsのインストール先を指定します。
+5. 「ESLint package」に、ESLintのインストール先を指定します。

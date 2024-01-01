@@ -32,16 +32,18 @@ function DateContentInner(params: {format:FORMAT, date:Date}){
         case "left":
             const left_div=diff_years_days_hours_minutes_seconds(date,now)
             return <>
-                <Typography variant="h4">{dateToString(params.date)}まで</Typography>
-                <>あと{Math.ceil(diff_days(params.date, now))}日</>
-                <p>{left_div[0]}年{left_div[1]}日{left_div[2]}時間{left_div[3]}分{left_div[4]}秒</p>
+                <Typography variant="h4">{dateToString(params.date)}まであと{Math.ceil(diff_days(params.date, now))}日</Typography>
+                <p>
+                    あるいは {left_div[0]}年{left_div[1]}日{left_div[2]}時間{left_div[3]}分{left_div[4]}秒
+                </p>
             </>
         case "passed":
             const passed_div=diff_years_days_hours_minutes_seconds(now,date)
             return <>
-                <Typography variant="h4">{dateToString(params.date)}から</Typography>
-                <>{Math.floor(diff_days(now, params.date))}日経過</>
-                <p>{passed_div[0]}年{passed_div[1]}日{passed_div[2]}時間{passed_div[3]}分{passed_div[4]}秒</p>
+                <Typography variant="h4">{dateToString(params.date)}から{Math.floor(diff_days(now, params.date))}日が経過</Typography>
+                <p>
+                    あるいは {passed_div[0]}年{passed_div[1]}日{passed_div[2]}時間{passed_div[3]}分{passed_div[4]}秒<br/>
+                </p>
             </>
         case "life":
             const date80 = date_plus(params.date, 80)
@@ -49,9 +51,11 @@ function DateContentInner(params: {format:FORMAT, date:Date}){
             const divided=diff_years_days_hours_minutes_seconds(date80,now)
             return <>
                 {dateToString(params.date)}生まれは
-                <Typography variant="h4">人生80年として{percent}%経過、残り{100 - percent}%</Typography>
-                <p>残り：{Math.floor((date80.getTime()-now.getTime())/1000)}秒</p>
-                <p>{divided[0]}年{divided[1]}日{divided[2]}時間{divided[3]}分{divided[4]}秒</p>
+                <Typography variant="h4">人生80年の{percent}%が経過、残りは{100 - percent}%</Typography>
+                <p>
+                    死まで{Math.floor((date80.getTime()-now.getTime())/1000)}秒<br/>
+                    あるいは{divided[0]}年{divided[1]}日{divided[2]}時間{divided[3]}分{divided[4]}秒
+                </p>
             </>
     }
 }
