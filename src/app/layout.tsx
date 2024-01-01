@@ -24,6 +24,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
               spacing={2}
           >
               <a href={url("/")}>home</a>
+              <a href="https://github.com/lzpel/calendar">github</a>
               <a href="https://twitter.com/lzpel">© lzpel 2024</a>
           </Stack>
       </Container>
