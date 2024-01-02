@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import React from "react";
-import {Container, Grid} from "@mui/material";
+import {Container, Grid, Typography} from "@mui/material";
 import {Stack} from "@mui/system";
 import url from "@/util/url";
 
@@ -16,7 +16,8 @@ export default function RootLayout(props: { children: React.ReactNode }) {
     <html lang="jp">
       <body>
       <Container fixed>
-          <h1>{title}</h1>
+          <Typography variant="h3" mt={2}>{title}</Typography>
+          <hr/>
           {props.children}
           <hr/>
           <Stack
