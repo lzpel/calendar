@@ -59,7 +59,7 @@ found 0 vulnerabilities
 Success! Created calendar at /home/smith/calendar
 ```
 
-## ESLintとWebStormのせっていについて
+## ESLintとWebStormの連携
 
 以下の手順で、WebStormでESLintのエラーをエディター上に表示することができます。
 
